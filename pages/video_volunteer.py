@@ -17,7 +17,9 @@ from dash_iconify import DashIconify
 import plotly.graph_objects as go
 import numpy as np
 
-df = pd.read_excel('Data_Video Volunteers.xlsx')
+dash.register_page(__name__, path='/VideoVolunteers')
+
+df = pd.read_excel('assets/data_vv.xlsx')
 cc_name = df.cc_name.unique().tolist()
 cc_name = sorted(cc_name)
 state_name = df.state_name.unique().tolist()
@@ -608,9 +610,6 @@ def country_info(dff):
     return data
 
 
-app = Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP], meta_tags=[
-               {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
-             ],)
 
 backcolor = "#ECF9FF"
 containercolor= "#f1faee"
@@ -623,7 +622,7 @@ selectcolor = "#457b9d"
 
 
 
-app.layout = dmc.Paper(children=[
+layout = dmc.Paper(children=[
     dmc.Stack([
 #         dmc.MediaQuery([
         dmc.Paper(
@@ -874,7 +873,7 @@ app.layout = dmc.Paper(children=[
 #
 
 
-@app.callback(
+@dash.callback(
     Output('cc-name', 'data'),
 #     Output('cc-name', 'value'),
 #     Output('heading', 'children'),
@@ -887,7 +886,7 @@ def update_cc(val):
     else:
         return cc_name#, 'Amit Topno'
         
-@app.callback(
+@dash.callback(
     Output('state-name', 'value'),
 #     Output('heading', 'children'),
     Input('cc-name', 'value'),
@@ -901,11 +900,11 @@ def update_state(val):
     else:
         return 'Jharkhand'
         
-@app.callback(Output("column-select", "error"), Input("column-select", "value"))
+@dash.callback(Output("column-select", "error"), Input("column-select", "value"))
 def select_value(value):
     return "Select at least 3." if len(value) < 3 else ""
 
-@app.callback(Output("sankey-chart", 'figure'), Input("column-select", "value"),
+@dash.callback(Output("sankey-chart", 'figure'), Input("column-select", "value"),
              Input("state-name", 'value'), Input('cc-name', 'value'), Input('sankey-value', 'value'), 
              Input("sankey-value-type", 'value'))
 def populate_graph_sankey(value, state, cc, sankey_val, ispercentage):
@@ -936,7 +935,7 @@ def populate_graph_sankey(value, state, cc, sankey_val, ispercentage):
     else:
         raise PreventUpdate
 
-@app.callback(Output('avatar-name', 'children'),Output('full-name', 'children'),
+@dash.callback(Output('avatar-name', 'children'),Output('full-name', 'children'),
               Output('descrip-table', 'children'),
               Input("state-name", 'value'), Input("cc-name", 'value'))
 def update_name(state,cc):
@@ -953,7 +952,7 @@ def update_name(state,cc):
         table = cc_info(df4)
     return "".join([i[0].upper() for i in name.split(" ")]), name.upper(), table
         
-@app.callback(Output('issue-produced', 'children'),Output('issue-resolved', 'children'),
+@dash.callback(Output('issue-produced', 'children'),Output('issue-resolved', 'children'),
               Output('affected-individuals', 'children'), Output('affected-population', 'children'),
               Output('issue-approved', 'children'),
               Input("state-name", 'value'), Input("cc-name", 'value'))
@@ -966,7 +965,7 @@ def card_populate(state, cc):
     
     return f"{len(df4['issue']):,}", df4.is_impact.sum(),f'{int(np.mean(df4.people_impacted.fillna(0))):,}', f'{int(np.sum(df4.people_impacted.fillna(0))):,}', df4.approval.dropna().shape[0]
 
-@app.callback(Output('geo-chart', 'figure'), Input("state-name", 'value'), Input('cc-name', 'value'))
+@dash.callback(Output('geo-chart', 'figure'), Input("state-name", 'value'), Input('cc-name', 'value'))
 def populate_graph(state, cc):
     df4 = df3.copy()
     zoom=4

@@ -1,0 +1,25 @@
+pandas
+dash==2.8.1
+dash-bootstrap-components
+gunicorn==20.0.4
+plotly
+xlrd== 1.1.0
+pathlib
+pybase64
+regex
+emoji
+matplotlib
+numpy
+datetime
+dash-auth==1.4.1
+dash-canvas
+dash-cytoscape==0.2.0
+dash-daq==0.5.0
+dash-extensions==0.0.51
+dash-renderer==1.9.0
+dash-table==5.0.0
+imutils
+openpyxl
+werkzeug==2.0.3
+dash_mantine_components==0.11.1
+dash_iconify==0.1.2
