@@ -16,6 +16,7 @@ from dash.exceptions import PreventUpdate
 from dash_iconify import DashIconify
 import plotly.graph_objects as go
 import numpy as np
+import dash
 
 dash.register_page(__name__, path='/VideoVolunteers')
 
