@@ -137,7 +137,7 @@ layout = dmc.MantineProvider(
                                 dmc.Text("Company Name")
                             ])
                         ],p='10px', style={"backgroundColor": "#fff"}),
-                    dash.page_container],
+                    html.P()],
                     id="page-container",
                     p=0,
                     fluid=True,
