@@ -2,7 +2,6 @@
 import dash_mantine_components as dmc
 import dash
 from dash import Output, Input, State, html
-from jupyter_dash import JupyterDash
 from dash_iconify import DashIconify
 
 def get_icon(icon):
