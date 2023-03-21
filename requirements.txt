@@ -23,5 +23,5 @@ yfinance
 xlsxwriter
 openpyxl
 scikit-learn
-dash_mantine_components
+dash_mantine_components==0.12.0
 dash_iconify
