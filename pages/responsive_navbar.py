@@ -172,5 +172,3 @@ def drawer_demo(opened, width):
 def drawer_dem(n_clicks):
     return True
         
-
-app.run_server()
