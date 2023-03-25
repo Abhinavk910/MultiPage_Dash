@@ -3,6 +3,7 @@ import dash_mantine_components as dmc
 import dash
 from dash import Output, Input, State, html
 from dash_iconify import DashIconify
+from dash.dependencies import ClientsideFunction
 
 def get_icon(icon):
     return DashIconify(icon=icon, height=16, color="#c2c7d0")

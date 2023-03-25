@@ -3,6 +3,7 @@ import dash_mantine_components as dmc
 import dash
 from dash import Output, Input, State, html
 from dash_iconify import DashIconify
+from dash.dependencies import ClientsideFunction
 
 def get_icon(icon):
     return DashIconify(icon=icon, height=16, color="#c2c7d0")
@@ -164,11 +165,19 @@ def drawer_demo(opened, width):
         raise PreventUpdate
 
         
-@dash.callback(
+dash.clientside_callback(
+    ClientsideFunction(namespace='clientside', function_name='handle_click'),
     Output("drawer-simple", "opened"),
-    Input("drawer-demo-button", "n_clicks"),
-    prevent_initial_call=True,
-    )
-def drawer_dem(n_clicks):
-    return True
+    [Input("drawer-demo-button", "n_clicks")]
+)
+
+
+
+dash.clientside_callback(
+    ClientsideFunction(namespace='clientside', function_name='handle_click_sidebar_width'),
+    Output("sidebar", "width"),
+    [Input("sidebar-button", "n_clicks"),],
+    [State('sidebar','width')]
+)
+
         
