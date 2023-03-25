@@ -30,7 +30,7 @@ layout = dmc.MantineProvider(
                     hiddenBreakpoint='md',
                     position='right',
                     height='100vh',
-                    id='sidebar',
+                    id='sidebar2',
                     children=[
                         html.Div(
                             [
@@ -69,7 +69,7 @@ layout = dmc.MantineProvider(
                     ),      
                 dmc.Drawer(
                         title="Company Name",
-                        id="drawer-simple",
+                        id="drawer-simple2",
                         padding="md",
                         zIndex=10000,
                         size=300,
@@ -124,7 +124,7 @@ layout = dmc.MantineProvider(
                                         DashIconify(icon="ci:hamburger-lg", width=24, height=24,color="#c2c7d0"),
                                         variant="subtle", 
                                         p=1,
-                                        id='sidebar-button'
+                                        id='sidebar-button2'
                                     ),
                                     ], smallerThan="md", styles={'display': 'none'}),
                                 dmc.MediaQuery([
@@ -132,14 +132,14 @@ layout = dmc.MantineProvider(
                                         DashIconify(icon="ci:hamburger-lg", width=24, height=24,color="#c2c7d0"),
                                         variant="subtle", 
                                         p=1,
-                                        id='drawer-demo-button'
+                                        id='drawer-demo-button2'
                                     ),
                                     ], largerThan="md", styles={'display': 'none'}),
                                 dmc.Text("Company Name")
                             ])
                         ],p='10px', style={"backgroundColor": "#fff"}),
                     html.P()],
-                    id="page-container",
+                    id="page-container2",
                     p=0,
                     fluid=True,
                     style={'background-color':'#f4f6f9', 'width':'100%', 'margin':'0'}
@@ -153,17 +153,17 @@ layout = dmc.MantineProvider(
         
 dash.clientside_callback(
     ClientsideFunction(namespace='clientside', function_name='handle_click'),
-    Output("drawer-simple", "opened"),
-    [Input("drawer-demo-button", "n_clicks")]
+    Output("drawer-simple2", "opened"),
+    [Input("drawer-demo-button2", "n_clicks")]
 )
 
 
 
 dash.clientside_callback(
     ClientsideFunction(namespace='clientside', function_name='handle_click_sidebar_width'),
-    Output("sidebar", "width"),
-    [Input("sidebar-button", "n_clicks"),],
-    [State('sidebar','width')]
+    Output("sidebar2", "width"),
+    [Input("sidebar-button2", "n_clicks"),],
+    [State('sidebar2','width')]
 )
 
         
