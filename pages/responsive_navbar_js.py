@@ -10,7 +10,7 @@ def get_icon(icon):
 
 
 
-dash.register_page(__name__, path='/ResponsiveNavbar')
+dash.register_page(__name__, path='/ResponsiveNavbarJS')
 
 
 layout = dmc.MantineProvider(
