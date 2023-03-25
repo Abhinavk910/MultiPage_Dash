@@ -1,6 +1,5 @@
 const handle_click = (n_clicks) => {
   if (n_clicks > 0) {
-    // Perform some action here
     return true;
   } else {
     return '';
