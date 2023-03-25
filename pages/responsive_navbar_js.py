@@ -149,20 +149,6 @@ layout = dmc.MantineProvider(
 
 
 
-@dash.callback(
-    Output("sidebar", "width"),
-    Input("sidebar-button", "n_clicks"),
-    State('sidebar','width'),
-    prevent_initial_call=True,
-    )
-def drawer_demo(opened, width):
-    if opened:
-        if width['base'] == 300:
-            return {"base": 70}
-        else:
-            return {'base':300}
-    else:
-        raise PreventUpdate
 
         
 dash.clientside_callback(
