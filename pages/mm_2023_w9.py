@@ -40,7 +40,7 @@ cart_text_size = 35
 name_size = 30
 tilecolor = "#e63946"
 selectcolor = "#457b9d"
-mmw9_2023_layout = dmc.MantineProvider(
+layout = dmc.MantineProvider(
     theme={
             'fontFamily': '"Inter", sans-serif',
                 'body'  : {
