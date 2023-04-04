@@ -111,7 +111,7 @@ mmw9_2023_layout = dmc.MantineProvider(
                                                     order=2,
                                                     orderMd=2,
                                                     children=[
-                                                        dcc.Graph(figure=fig, id='figure_mm9_2023', config={'displayModeBar': False}),                                
+                                                        dcc.Graph( id='figure_mm9_2023', config={'displayModeBar': False}),                                
                                                         ]
                                                 ),
                                                 dmc.Col(
