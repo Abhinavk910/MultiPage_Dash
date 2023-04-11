@@ -122,7 +122,7 @@ mmw7_2033_layout = dmc.Container(children=[
         ],p=10, px=20, mb=10, radius=10,shadow="sm",mx=2, id='source-paper-mm7-2023', style={"background-color": containercolor}
         )
     ], style={'overflow-x': 'auto', 'max-width':'900px',  'margin':'auto'})
-], size='auto',m=0,p=20,id='outer-mm7-2023', className='min-vh-100 mx-sm-0 mx-md-auto d-flex justify-content-center align-items-center', 
+], size='auto',m=0,p=20,id='outer-mm7-2023', className='min-vh-100 mx-sm-0 mx-md-auto', 
              style={"background-color": backcolor})
 
 layout = dmc.MantineProvider(
