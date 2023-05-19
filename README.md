@@ -18,7 +18,9 @@ In this repository, Dash Pages has been utilized to develop a multi-page applica
 ![Dashboard](assets/vv_snap.PNG) 
 
 Project [link](https://www.vizforsocialgood.com/join-a-project/2023/2/4/video-volunteers-india)
+
 Dashboard [link](https://dashboardit.onrender.com/VideoVolunteers)
+
 One of the key areas focused is automating the generation of Sankey charts. Sankey charts are powerful visualizations that help depict flows and relationships between different variables.
 
 * Responsive Navbar
@@ -26,7 +28,9 @@ One of the key areas focused is automating the generation of Sankey charts. Sank
 ![Navbar](assets/navbar_snap.PNG)
 
 Medium Blog [link](https://abhinavk910.medium.com/building-dashboard-using-dash-responsive-navbar-part-1-455c68eb04ae)
+
 Navbar [link](https://dashboardit.onrender.com/ResponsiveNavbarJS)
+
 Building Responsive Navbar in dash using dash mantine component.
 
 
