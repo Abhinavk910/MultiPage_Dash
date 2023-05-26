@@ -41,7 +41,7 @@ layout=html.Div(
                 dmc.Col(
                     span=6,
                     children=[
-                        dmc.NumberInput(id='interval-input', value=1, label='Set Interval', description='1 means incrementality after 1 second'),
+                        dmc.NumberInput(id='interval-input', value=3, label='Set Interval', description='1 means incrementality after 1 second'),
                     ]
                 )
             ]
