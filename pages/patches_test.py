@@ -1,7 +1,7 @@
 import yfinance as yf
 import datetime
 import pandas as pd
-from dash import Input, Output, State, html, dcc, no_update, Patch, ctx
+from dash import Input, Output, State, html, dcc, no_update, Patch, ctx, clientside_callback
 import dash_mantine_components as dmc
 import dash
 import plotly.express as px
