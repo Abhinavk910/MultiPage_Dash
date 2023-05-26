@@ -57,10 +57,23 @@ layout=html.Div(
     ]
 )
 
+
+clientside_callback(
+    """
+    function updateLoadingState(n_clicks) {
+        return true
+    }
+    """,
+    Output("start-btn", "loading", allow_duplicate=True),
+    Input("start-btn", "n_clicks"),
+    prevent_initial_call=True,
+)
+
 @dash.callback(
     Output('interval1', 'interval'),
     Output('interval1', 'n_intervals'),
     Output('interval1', 'max_intervals'),
+    Output('start-btn', 'loading'),
     Input('start-btn', 'n_clicks'),
     State('ninterval-input', 'value'),
     State('interval-input', 'value'),
@@ -69,9 +82,9 @@ layout=html.Div(
 )
 def showit(n, nint, int_,  max_):
     if max_ == -1:
-        return int_*1000, nint, 0
+        return int_*1000, nint, 0, False
     else:
-        return int_*1000, nint, -1
+        return int_*1000, nint, -1, False
 
 @dash.callback(
     Output('graph1', 'figure'),
