@@ -34,6 +34,10 @@ Navbar [link](https://dashboardit.onrender.com/ResponsiveNavbarJS)
 Building Responsive Navbar in dash using dash mantine component.
 
 
+* Patch
+
+[link](https://dashboardit.onrender.com/patch_test)
+
 * Makeover Monday
 
 Week 7, 2023 [link](https://dashboardit.onrender.com/mm_2023_w7)

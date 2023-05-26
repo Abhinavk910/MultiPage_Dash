@@ -27,7 +27,7 @@ df = get_stock_data('RELIANCE.NS', '2000-01-01')
 
 
 layout=html.Div(
-    style={'max-width':"1000px", 'margin':"20px", 'padding':"5px"},
+    # style={'max-width':"1000px", 'margin':"20px", 'padding':"5px"},
     children=[
         dmc.Text("How Patch Perform, Let's check", size=30, weight=500),
         dmc.Grid(
