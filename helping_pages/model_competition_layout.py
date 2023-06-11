@@ -234,7 +234,7 @@ layout_mc = html.Div(
                                             style={'marginTop':'20px'},
                                             children=[
 
-                                                dmc.Button("Download xlsx", id="btn-xslx-p8",
+                                                dmc.Button("Download Reply", id="btn-xslx-p8",
                                                        leftIcon=DashIconify(icon="material-symbols:download-rounded"),
                                                        style={'width':'200px', 'margin':'auto'}),
                                                 dcc.Download(id="download-xslx-p8")
