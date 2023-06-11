@@ -45,7 +45,7 @@ body{
 	animation-delay: 2.5s;
 }
 
-#hero h1 #reverse {
+#hero h1 .reverse {
 	position: absolute;
 	top: 0;
 	left: 0;
