@@ -64,7 +64,7 @@ layout_mc = html.Div(
                                                     size="xs",radius="xs"), href="http://www.linkedin.com/in/abhinavk910", target="_blank",
                                                 ),
                                                 html.A(dmc.Avatar(DashIconify(icon="mdi:github", width=15, color="#a8dadc"),#'#24292f'
-                                                       size="xs",radius="xs"), href="https://github.com/Abhinavk910/Data-Visualization/tree/main/apps/Makeover_Mondays",
+                                                       size="xs",radius="xs"), href="https://github.com/Abhinavk910/MultiPage_Dash/blob/main/pages/modelcompetition.py",
                                                        target="_blank",
                                                 )
                                             ]
