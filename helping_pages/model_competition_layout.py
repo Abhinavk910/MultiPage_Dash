@@ -76,8 +76,10 @@ layout_mc = html.Div(
                         html.Div(
                             hidden=False,
                             id='html-div-to-hide',
+                            style={'margin':'10px'},
                             children=[
                                 html.H1(
+
                                     style={'fontSize':'4rem'},
                                     children=[
                                         'Model Competition',
