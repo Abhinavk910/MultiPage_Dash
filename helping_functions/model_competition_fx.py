@@ -29,10 +29,10 @@ model_data = [
         'AI21 - j2-jumbo-instruct',
         'Replicate - vicuna-13b',
         'Replicate - stability-ai/stablelm-tuned-alpha-7b',
-        'Replicate - llama-7b',
-        'Replicate - dolly-v2-12b',
-        'Replicate - oasst-sft-1-pythia-12b',
-        'Replicate - gpt-j-6b'
+        # 'Replicate - llama-7b',
+        # 'Replicate - dolly-v2-12b',
+        # 'Replicate - oasst-sft-1-pythia-12b',
+        # 'Replicate - gpt-j-6b'
 ]
 
 

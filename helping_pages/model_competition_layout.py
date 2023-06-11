@@ -102,7 +102,7 @@ layout_mc = html.Div(
                             hidden=True,
                             style={'width':'95%'},
                             children=[
-                                dmc.ActionIcon(DashIconify(icon='iconamoon:restart-fill'), id='back-to-start'),
+                                dmc.ActionIcon(DashIconify(icon='iconamoon:restart-fill'), id='back-to-start', style={'display':'none'}),
                                 dmc.Center(
                                     style={'flexWrap':'wrap'},
                                     m=20,
