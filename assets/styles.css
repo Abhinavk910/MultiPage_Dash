@@ -5,3 +5,87 @@ body{
 #sidebar:hover {
 	width: 300px;
 }
+
+
+#hero h1 {
+	display: block;
+	width: fit-content;
+	position: relative;	
+	color: transparent;
+	animation: text_reveal 1s ease forwards;
+	animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+	animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+	animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+	animation-delay: 3s;
+}
+
+#hero h1 .start {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-color: #a8dadc;
+	animation: text_reveal_box 1s ease;
+	animation-delay: .5s;
+}
+#hero h1:nth-child(1) .start{
+	animation-delay: .5s;
+}
+#hero h1:nth-child(2) .start{
+	animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) .start{
+	animation-delay: 2.5s;
+}
+
+#hero h1 #reverse {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-color: #a8dadc;
+	animation: text_reveal_box 1s ease;
+	animation-delay: 5s;
+}
+
+#hero h1:nth-child(2) .reverse {
+	animation-delay: 6s;
+}
+#hero h1:nth-child(3) .reverse {
+	animation-delay: 7s;
+}
+
+
+/* Keyframes */
+
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: #457b9d;
+	}
+}
+@keyframes text_reveal_name {
+	100% {
+		color: transparent;
+	}
+}
+/* End Keyframes */
+
+
