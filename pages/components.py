@@ -189,7 +189,7 @@ def group(children:list,id:str='',  position:str='center', spacing:int=5, align:
     )
 
 #container
-def paper(children:list, id='', padding:str|int='xs',margin:str|int=10,radius:int=0, shadow:str|int='sm', withborder:bool=False):
+def paper(children:list, id='', padding='xs',margin=10,radius:int=0, shadow='sm', withborder:bool=False):
     """ 
     shadow - Predefined box-shadow from theme.shadows (xs, sm, md, lg, xl) or
             ny valid css box-shadow property.
@@ -204,7 +204,7 @@ def paper(children:list, id='', padding:str|int='xs',margin:str|int=10,radius:in
         children=children
     )
 
-def modal(id:str, children:list, title:str='',zIndex:int=1000, size:str|int="55%", centered:bool=True, overflow:str='outside', opened:bool=False, lockScroll:bool=True):
+def modal(id:str, children:list, title:str='',zIndex:int=1000, size="55%", centered:bool=True, overflow:str='outside', opened:bool=False, lockScroll:bool=True):
     """
     overflow (a value equal to: 'outside', 'inside'; optional):Control vertical overflow behavior.
     opened (boolean; default False): Mounts modal if True.
