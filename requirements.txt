@@ -33,3 +33,5 @@ openai==0.27.6
 tiktoken
 reportlab==3.6.12
 icecream
+feffery_antd_components
+feffery_utils_components
