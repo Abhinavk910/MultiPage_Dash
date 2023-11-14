@@ -23,9 +23,6 @@ from datetime import datetime, date
 import time
 
 import os
-from flask import Flask, request, redirect, session
-from flask_login import login_user, LoginManager, UserMixin, logout_user, current_user
-
 from datetime import datetime
 from icecream import ic
 def time_format():
