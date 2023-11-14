@@ -222,3 +222,13 @@ def modal(id:str, children:list, title:str='',zIndex:int=1000, size="55%", cente
         opened=opened,
         lockScroll=lockScroll
     )
+
+
+def get_ferry_top_pregress(children:list, color:str):
+    return fuc.FefferyTopProgress(
+        children=children,
+        color=color,
+        id='top-progress',
+        # listenPropsMode='exclude',
+        style={'width':'-webkit-fill-available'}
+    )

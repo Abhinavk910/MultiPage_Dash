@@ -93,7 +93,7 @@ def create_layout():
                     # mah='100vh',
                     style={'backgroundColor':'#F9F9F9'},
                     children=[
-                        init_struc
+                        get_ferry_top_pregress(init_struc, '#228BE6')
                     ]
                 )
 
