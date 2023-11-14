@@ -8,7 +8,11 @@ def create_layout():
                     p='xl',
                     mih='100vh',
                     children=[
-                        dmc.Text('BSE - Bristol Stock Exchange')
+                        dmc.Text('BSE - Bristol Stock Exchange', weight=700, size='xl'),
+                        html.Hr(),
+                        dmc.Text("BSE is simulation of a limit order book (LOB) exchange. There are a number of trading algorithms already built in and it provides a wide range of customizations to suit a large variety of experiments."),
+                        html.Hr(),
+                        dmc.Text("At a high level, BSE works as follows. First, you set a number of configuration parameters (specifying the trading agents in the market, the demand and supply in the market, and how demand and supply is allocated over time) that describe the experiment you want to conduct. You then ask BSE to simulate a number of market sessions that follow those configuration parameters. BSE's simulation will produce a number of output files that result from these simulated trading sessions. Data in these output files can then be analysed.  ")
                     ]
                 )
     
@@ -44,16 +48,15 @@ def create_layout():
     sd_schedule_paper = paper(children=[scheduler_group, order_group])
 
 
-    graph_btn = button(id='bse-graph1-btn', label='Generate SD Curve')
+    graph_btn = button(id='bse-graph1-btn', label='Plot Trades', licon="mdi:chart-scatter-plot")
     show_segment = segmentcontrol(id='show-buyer-seller-segment', data=['Buyers', 'Sellers'], value='Buyers')
     scheduler_group = group(children=[graph_btn, show_segment], position='left')
-    graph_paper = paper(children=[scheduler_group, dcc.Graph(id='bse-graph1')])
+    graph_paper = paper(children=[scheduler_group, dcc.Graph(id='bse-graph1', config ={'doubleClick' :'reset', 'displaylogo':False, 'modeBarButtonsToRemove':['resetViews', 'sendDataToCloud', 'select2d', 'lasso2d']})])
     param_tab = dmc.Container(
                     fluid=True,
                     p='xl',
                     # mih='100vh',
                     children=[
-                        dmc.Text('BSE - Parameters'),
                         dcc.Store(id='storing-ps3-pb3', data={}),
                         buyer_paper,
                         seller_paper,
@@ -67,7 +70,7 @@ def create_layout():
                     p='xl',
                     # mih='100vh',
                     children=[
-                        dmc.Text('BSE - Viz')
+                        dmc.Text('BSE - Viz, WOP')
                     ]
                 )
 
@@ -82,9 +85,11 @@ def create_layout():
                     dmc.TabsPanel(param_tab, value="param"),
                     dmc.TabsPanel(viz_tab, value="viz"),
                     ],
-                    color="red",
+                    color='#228BE6',
                     orientation="horizontal",
-                    value='param'
+                    value='bse',
+                    persistence="true",
+                    persistence_type="session",
                 )
 
     main_container = dmc.Container(

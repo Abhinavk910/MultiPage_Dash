@@ -139,8 +139,9 @@ def register_callbacks():
         data = tape_df.loc[:, ['time', 'price', 'to_color1', 'to_color2']].to_json(orient='records')
 
         fig = px.scatter(tape_df, x="time", y="price", color='to_color1')
-        fig.update_traces(mode="markers", hovertemplate="Time - %{x:.0f}<br>Price - %{y}")
-        fig.update_layout(legend=dict(
+        fig.update_traces(mode="markers", hovertemplate="Time - %{x:.0f} Sec<br>Price - £ %{y}")
+        fig.update_layout(yaxis_title='Price(£)',
+            xaxis_title='Time(Sec)',modebar_orientation='v',legend=dict(
             title='Buyers' if segment == 'Buyers' else 'Sellers',
             orientation="h",
             yanchor="bottom",
@@ -164,8 +165,9 @@ def register_callbacks():
             fig = px.scatter(tape_df, x="time", y="price", color='to_color1')
         else:
             fig = px.scatter(tape_df, x="time", y="price", color='to_color2')
-        fig.update_traces(mode="markers", hovertemplate="Time - %{x:.0f}<br>Price - %{y}")
-        fig.update_layout(legend=dict(
+        fig.update_traces(mode="markers", hovertemplate="Time - %{x:.0f} Sec<br>Price - £ %{y}")
+        fig.update_layout(yaxis_title='Price(£)',
+            xaxis_title='Time(Sec)',modebar_orientation='v',legend=dict(
             title='Buyers' if segment == 'Buyers' else 'Sellers',
             orientation="h",
             yanchor="bottom",
