@@ -1,7 +1,7 @@
 pandas
 gunicorn==20.0.4
 plotly
-xlrd== 1.1.0
+xlrd
 pathlib
 joblib
 pybase64
