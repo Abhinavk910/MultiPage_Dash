@@ -48,7 +48,11 @@ def textinput(id, label, placeholder, licon='ic:round-alternate-email'):
                 icon=DashIconify(icon=licon),
             )
 
-def numberinput(id, label, description:str=None, value:int=0, min:int=0, max:int=99, step:int=1,precision:int=0, style:dict={'width':'200px'}, licon="fa6-solid:weight-scale"):
+def numberinput(id, label, description:str=None, value:int=0, min:int=0, max:int=99, step:int=1,precision:int=0, style:dict={'width':'200px'}, licon="fa6-solid:weight-scale", flip=None):
+    if flip:
+        icon = DashIconify(icon=licon, flip=flip)
+    else:
+        icon = DashIconify(icon=licon)
     return dmc.NumberInput(
                 id=id,
                 label=label,
@@ -59,10 +63,10 @@ def numberinput(id, label, description:str=None, value:int=0, min:int=0, max:int
                 step=step,
                 style=style,
                 precision=precision,
-                icon=DashIconify(icon=licon),
+                icon=icon,
             )
 
-def rangeslider(id:str, label:str, width:int=1000, max=200, min=10, value:list=[10, 200], marginButtom=0, margin=10):
+def rangeslider(id:str, label:str, width:int=1000, max=500, min=10, value:list=[10, 200], marginButtom=0, margin=10):
     return dmc.Stack(
         spacing=0,
         children=[
@@ -78,7 +82,8 @@ def rangeslider(id:str, label:str, width:int=1000, max=200, min=10, value:list=[
                     for i in value
                 ],
                 mb=marginButtom,
-                m=margin
+                m=margin,
+                step=10
             )
         ]
     )
