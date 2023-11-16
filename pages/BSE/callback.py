@@ -65,6 +65,8 @@ def register_callbacks():
     @callback(
         Output('bse-graph1', 'figure', allow_duplicate=True),
         Output('storing-ps3-pb3', 'data'),
+        Output('graph-throwing-any-error1', 'children'),
+        Output('graph-throwing-any-error1', 'hide'),
         Input('bse-graph1-btn', 'n_clicks'),
         State({'type': 'bse-seller-type', 'index': ALL}, 'value'),
         State({'type': 'bse-seller-num', 'index': ALL}, 'value'),
@@ -78,9 +80,11 @@ def register_callbacks():
         State('bse-sd-scheduler-order-interval', 'value'),
         State('bse-timemode', 'value'),
         State('show-buyer-seller-segment', 'value'),
+        State('storing-ps3-pb3', 'data'),
+        State('bse-graph1', 'figure',),
         prevent_initial_call=True
     )
-    def update_sd_graph(n, seller_type, seller_num, seller_range, buyer_type, buyer_num, buyer_range, sch_start, sch_end, sch_stepmode, order_interval, timemode, segment):
+    def update_sd_graph(n, seller_type, seller_num, seller_range, buyer_type, buyer_num, buyer_range, sch_start, sch_end, sch_stepmode, order_interval, timemode, segment, data_old, fig_old):
         # ic(n, seller_type, seller_num, seller_range, buyer_type, buyer_num, buyer_range, sch_start, sch_end, sch_stepmode, order_interval, timemode)
         buyers_spec =  [(type_, num_) for type_, num_  in zip(buyer_type, buyer_num)]
         sellers_spec =  [(type_, num_) for type_, num_  in zip(seller_type, seller_num)]
@@ -123,9 +127,15 @@ def register_callbacks():
 
         verbose = False
         ic(trial_id, start_time, end_time, traders_spec, order_sched, dump_flags, verbose)
-        tape_df = market_session(trial_id, start_time, end_time, traders_spec, order_sched, dump_flags, verbose)
+        try:
+            tape_df = market_session(trial_id, start_time, end_time, traders_spec, order_sched, dump_flags, verbose)
+        except Exception as e:
+            ic('i am in exception')
+            return fig_old, data_old, str(e), False
 
+        ic(tape_df)
         tape_df = tape_df.query('type == "Trade"')
+        ic(tape_df)
         pb1 = tape_df.party1.map(buyer_dictionary)
         pb2 = tape_df.party2.map(buyer_dictionary)
         pb3 = pb1.fillna(pb2)
@@ -135,7 +145,7 @@ def register_callbacks():
 
         tape_df['to_color1'] = pb3
         tape_df['to_color2'] = ps3
-
+        ic(tape_df)
         data = tape_df.loc[:, ['time', 'price', 'to_color1', 'to_color2']].to_json(orient='records')
 
         fig = px.scatter(tape_df, x="time", y="price", color='to_color1')
@@ -149,7 +159,7 @@ def register_callbacks():
             xanchor="right",
             x=1
         ))
-        return fig, data
+        return fig, data, dash.no_update, dash.no_update
     
 
     @callback(
