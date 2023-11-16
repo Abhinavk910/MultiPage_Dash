@@ -19,7 +19,7 @@ def create_layout():
     buyer_title = dmc.Text(children="Buyer", size=20, color='blue')
     type_options = ["ZIP", "ZIC", "SHVR", "GVWY", "SNPR", "PRZI", "PRSH", "PRDE"]
     buyer_type = select(id={'type': 'bse-buyer-type', 'index': 0}, data=type_options, value="ZIP", label="Select Type of Buyer", righticon="", persistance=False)
-    buyer_num = numberinput(id={'type': 'bse-buyer-num', 'index': 0}, label='Select No of Buyer', min=1, step=1, value=5)
+    buyer_num = numberinput(id={'type': 'bse-buyer-num', 'index': 0}, label='Select No of Buyer', min=2, step=1, value=5)
     buyer_group = group(children=[buyer_type, buyer_num], position='left')
     add_new_buyer_btn = dmc.Group(position='right', m=10, children=[actionicon('bse-add-new-buyer', icon='ic:baseline-plus'), actionicon('bse-delete-new-buyer', icon='ic:baseline-minus')])
     buyer_range = rangeslider(id='bse-buyer-SDRange', label='Select Demand Range', width="99%", margin=0, marginButtom=10)
@@ -28,7 +28,7 @@ def create_layout():
     seller_title = dmc.Text(children="Seller", size=20, color='red')
     type_options = ["ZIP", "ZIC", "SHVR", "GVWY", "SNPR", "PRZI", "PRSH", "PRDE"]
     seller_type = select(id={'type': 'bse-seller-type', 'index': 0}, data=type_options, value="ZIP", label="Select Type of Seller", righticon="", persistance=False)
-    seller_num = numberinput(id={'type': 'bse-seller-num', 'index': 0}, label='Select No of Seller', min=1, step=1, value=5)
+    seller_num = numberinput(id={'type': 'bse-seller-num', 'index': 0}, label='Select No of Seller', min=2, step=1, value=5)
     seller_group = group(children=[seller_type, seller_num], position='left')
     add_new_seller_btn = dmc.Group(position='right', m=10, children=[actionicon('bse-add-new-seller', icon='ic:baseline-plus'), actionicon('bse-delete-new-seller', icon='ic:baseline-minus')])
     seller_range = rangeslider(id='bse-seller-SDRange', label='Select Supply Range', width="99%", margin=0, marginButtom=10)
@@ -51,7 +51,8 @@ def create_layout():
     graph_btn = button(id='bse-graph1-btn', label='Plot Trades', licon="mdi:chart-scatter-plot")
     show_segment = segmentcontrol(id='show-buyer-seller-segment', data=['Buyers', 'Sellers'], value='Buyers')
     scheduler_group = group(children=[graph_btn, show_segment], position='left')
-    graph_paper = paper(children=[scheduler_group, dcc.Graph(id='bse-graph1', config ={'doubleClick' :'reset', 'displaylogo':False, 'modeBarButtonsToRemove':['resetViews', 'sendDataToCloud', 'select2d', 'lasso2d']})])
+    alert_comp = alert(id='graph-throwing-any-error1')
+    graph_paper = paper(children=[scheduler_group,alert_comp, dcc.Graph(id='bse-graph1', config ={'doubleClick' :'reset', 'displaylogo':False, 'modeBarButtonsToRemove':['resetViews', 'sendDataToCloud', 'select2d', 'lasso2d']})])
     param_tab = dmc.Container(
                     fluid=True,
                     p='xl',
