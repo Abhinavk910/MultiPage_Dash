@@ -237,3 +237,23 @@ def get_ferry_top_pregress(children:list, color:str):
         # listenPropsMode='exclude',
         style={'width':'-webkit-fill-available'}
     )
+
+def get_graph_skeleton(graph_id:str, fig={'data': [],
+                                        'layout': {'xaxes':{'showgrid':'false', 'showticklabels':'false', 'zeroline':'false'}},
+                                        'frames': []}, config:dict=None, style:dict=None,
+                        className:str='none', responsive:bool=True):
+    if not config:
+        config = {"displaylogo": False,
+                  'modeBarButtonsToRemove': ['lasso2d', 'zoom', 'select', 'autoScale']}
+    if not style:
+        style = {"width": "100%", "height": "100%"}
+    return dmc.Skeleton(
+        height="100%",
+        width="100%",
+        visible=True,
+        id=graph_id+"-skeleton",
+        children=[
+            dcc.Graph(id=graph_id, figure=fig, style=style, className=className, config=config,
+                          responsive=responsive)
+        ]
+    )

@@ -5,7 +5,45 @@ from .utils import *
 def register_callbacks():
 
     @callback(
-        Output('buyer-group-stack1', 'children'),
+        Output('buyer-segment-div', 'children'),
+        Input('buyer-segment-control1', 'value'),
+        State('bse-sd-scheduler-start', 'value'),
+        State('bse-sd-scheduler-end', 'value')
+    )
+    def update_div(value, start, end):
+        if value == 'Static':
+            buyer_range = rangeslider(id={'type': 'bse-buyer-SDRange', 'index': 0}, label='Select Demand Range', width="90%", margin=0, marginButtom=10)
+            buyer_range_stack = dmc.Stack(children=[buyer_range], id='buyer-range-stack1')
+            add_new_range_btn = dmc.Group(position='right', m=10, children=[actionicon('bse-add-new-buyer-range', icon='ic:baseline-plus'), actionicon('bse-delete-new-buyer-range', icon='ic:baseline-minus')])
+            return [buyer_range_stack, add_new_range_btn]
+        elif value == 'Dynamic':
+            buyer_range = rangeslider(id={'type': 'bse-buyer-SDRange', 'index': 0}, label='Select Demand Range', width="90%", margin=0, marginButtom=10)
+            buyer_range2 = rangeslider(id={'type': 'bse-buyer-SDRange', 'index': 1}, label='Select Demand Range', width="90%", margin=0, marginButtom=10)
+            buyer_range_stack = dmc.Stack(children=[buyer_range, buyer_range2], id='buyer-range-stack1')
+            add_new_range_btn = dmc.Group(position='right', m=10, children=[actionicon('bse-add-new-buyer-range', icon='ic:baseline-plus'), actionicon('bse-delete-new-buyer-range', icon='ic:baseline-minus')])
+            mid_timing = numberinput(label='Add Mid Timing - 1',id={'type':'mid-timing', 'index':0}, min=start, max=end, step=5, value=start+50)
+            mid_section_stack = dmc.Stack(children=[mid_timing], id='buyer-range-mid-section1')
+            return [buyer_range_stack, add_new_range_btn, mid_section_stack]
+
+    @callback(
+        Output('buyer-range-mid-section1', 'children'),
+        Input('bse-add-new-buyer-range', 'n_clicks'),
+        Input('bse-delete-new-buyer', 'n_clicks'),
+        Input({'type':'mid-timing', 'index':ALL}, 'value'),
+        State('buyer-range-mid-section1', 'children'),
+        State('buyer-segment-control1', 'value'),
+        prevent_initial_update=True
+    )
+    def update_mid_range(add, sub, mid_val, child, segment):
+        if segment == 'Dynamic':
+             ic(mid_val, child)
+        else:
+            raise PreventUpdate
+
+
+
+    @callback(
+        Output('buyer-group-stack1', 'children', allow_duplicate=True),
         Input('bse-add-new-buyer', 'n_clicks'),
         Input('bse-delete-new-buyer', 'n_clicks'),
         State('buyer-group-stack1', 'children'),

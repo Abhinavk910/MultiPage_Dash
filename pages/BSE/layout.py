@@ -23,10 +23,9 @@ def create_layout():
     buyer_group = group(children=[buyer_type, buyer_num], position='left')
     buyer_stack = dmc.Stack(children=[buyer_group], id='buyer-group-stack1')
     add_new_buyer_btn = dmc.Group(position='right', m=10, children=[actionicon('bse-add-new-buyer', icon='ic:baseline-plus'), actionicon('bse-delete-new-buyer', icon='ic:baseline-minus')])
-    buyer_range = rangeslider(id={'type': 'bse-buyer-SDRange', 'index': 0}, label='Select Demand Range', width="90%", margin=0, marginButtom=10)
-    buyer_range_stack = dmc.Stack(children=[buyer_range], id='buyer-range-stack1')
-    add_new_range_btn = dmc.Group(position='right', m=10, children=[actionicon('bse-add-new-buyer-range', icon='ic:baseline-plus'), actionicon('bse-delete-new-buyer-range', icon='ic:baseline-minus')])
-    buyer_paper = paper(children=[buyer_title, buyer_stack, add_new_buyer_btn, dmc.Divider(variant="solid", m=10,),buyer_range_stack, add_new_range_btn], id='bse-paper-buyer')
+    segment_control1 = segmentcontrol(id='buyer-segment-control1', data=['Static', 'Dynamic'], value='Static')
+    segment_div = dmc.Stack(children=[], id='buyer-segment-div')
+    buyer_paper = paper(children=[buyer_title, buyer_stack, add_new_buyer_btn, dmc.Divider(variant="solid", m=10,),segment_control1, segment_div], id='bse-paper-buyer')
 
     seller_title = dmc.Text(children="Seller", size=20, color='red')
     type_options = ["ZIP", "ZIC", "SHVR", "GVWY", "SNPR", "PRZI", "PRSH", "PRDE"]
@@ -62,7 +61,7 @@ def create_layout():
     graph_paper = paper(children=[scheduler_group,alert_comp, dcc.Graph(id='bse-graph1', config ={'doubleClick' :'reset', 'displaylogo':False, 'modeBarButtonsToRemove':['resetViews', 'sendDataToCloud', 'select2d', 'lasso2d']})])
 
     sch_title1 = dmc.Text(children="Code", size=20, color='green')
-    code_btn = button(id='bse-code1-btn', label='Plot Trades', licon="ant-design:code-outlined")
+    code_btn = button(id='bse-code1-btn', label='Write code', licon="ant-design:code-outlined")
     code_space = dmc.Code(children="Code will be Like - ", id="current-experiment-code", block=True,)
     code_paper = paper(children=[sch_title1, code_btn, code_space])
 
