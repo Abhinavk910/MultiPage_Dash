@@ -35,3 +35,4 @@ reportlab==3.6.12
 icecream
 feffery_antd_components
 feffery_utils_components
+eli5==0.13.0
