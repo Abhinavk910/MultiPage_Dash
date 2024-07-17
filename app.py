@@ -6,7 +6,8 @@ import dash
 
 app = Dash(__name__, 
            use_pages=True,
-           external_stylesheets=[dbc.themes.BOOTSTRAP],
+           external_scripts=['https://cdn.tailwindcss.com'],
+           external_stylesheets=[dbc.icons.BOOTSTRAP, dbc.themes.BOOTSTRAP],
            meta_tags=[
                {"name": "viewport", "content": "width=device-width, initial-scale=1"}
              ],
