@@ -7,6 +7,10 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+package-lock.json
+package.json
+input.css
+node_modules/
 .Python
 build/
 develop-eggs/

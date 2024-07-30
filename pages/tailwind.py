@@ -23,6 +23,7 @@ def sidebar_icon(id: str, icon: str, href: str, tooltip: str):
             rounded-3xl hover:rounded-xl
             transition-all duration-300 ease-linear
             cursor-pointer shadow-lg
+            dark:bg-gray-800 dark:hover:bg-green-600 
             """,
         href=href,
         id={'type': 'sidebar-icon', 'index': str(id)},
@@ -46,6 +47,7 @@ def sidebar_icon(id: str, icon: str, href: str, tooltip: str):
 #replace layout with app.layout
 layout = html.Div(
     className='flex',
+    id='dark-mode-div',
     children=[
         dcc.Location(id='url', refresh='callback-nav'),
         html.Nav(
@@ -55,12 +57,12 @@ layout = html.Div(
                 # Navigation items will be added here
                 sidebar_icon(1, 'gem', '/home', 'Home'),
                 html.Hr(className="bg-gray-200 \
-                        border border-gray-200 rounded-full"),
+                        border border-gray-200 rounded-full dark:bg-gray-700"),
                 sidebar_icon(2, 'plus-lg', '/add', 'Add'),
                 sidebar_icon(3, 'cart-check-fill', '/check', 'Check'),
                 sidebar_icon(4, 'fan', '/run', 'Run'),
                 html.Hr(className="bg-gray-200 \
-                        border border-gray-200 rounded-full"),
+                        border border-gray-200 rounded-full dark:bg-gray-700"),
                 sidebar_icon(5, 'gear-fill', '/setting', 'Setting'),
             ]
         ),
@@ -72,14 +74,19 @@ layout = html.Div(
                                 w-full h-16 m-0  pl-20 shadow-lg""",
                     children=[
                         html.H5('', id='heading', className="""
-                                text-xl text-gray-500 tracking-wider font-semibold text-opacity-80 
+                                text-xl text-gray-500 dark:text-gray-100 tracking-wider font-semibold text-opacity-80 
                                 mr-auto ml-2 my-auto transition duration-300 ease-in-out
                             """
+                        ),
+                        html.Button(
+                            html.I(className="bi bi-moon", id='dark-mode-toggle-icon'),
+                            id="dark-mode-toggle",
+                            className="fixed top-4 right-4 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-900"
                         ),                
                     ]
                 ),
                 html.Div(
-                    className='min-h-screen bg-gray-100 flex flex-col ',
+                    className='min-h-screen bg-gray-100 flex flex-col dark:bg-gray-300 ',
                     children=[
                         html.Main(
                             className='flex-grow p-4 pl-20',
@@ -105,4 +112,24 @@ clientside_callback(
     """,
     Output('heading', 'children'),
     Input('url', 'pathname')
+)
+
+clientside_callback(
+    """
+    function(n_clicks, classit) {
+        console.log(classit);
+        const isDarkMode = classit.includes('dark');
+        if (isDarkMode) {
+            return ['bi bi-moon text-black', 'light']
+        }
+        else {
+            return ['bi bi-sun text-white', 'dark']
+        }
+    }
+    """,
+    Output("dark-mode-toggle-icon", "className"),
+    Output('dark-mode-div', 'className'),
+    Input("dark-mode-toggle", "n_clicks"),
+    State('dark-mode-div', 'className'),
+    prevent_initial_call=True
 )
